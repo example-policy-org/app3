@@ -12,31 +12,5 @@ on:
 
 jobs:
 
-  kyverno:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.4.0
-        with:
-          path: app
-
-      - uses: engineerd/setup-kind@v0.5.0
-        with:
-          skipClusterCreation: true
-
-      - name: Find policy version
-        id: policy_version
-        run: echo "::set-output name=policy_version=$(yq eval '.commonLabels["mycompany.com/policy-version"]' app/kustomization.yaml)"
-
-      - name: Download Policy pack
-        uses: actions/checkout@v2.4.0
-        with:
-          path: policy
-          repository: example-policy-org/policy
-          ref: ${{ steps.policy_version.outputs.policy_version }}
-
-      - name: Get kyverno
-        run: wget -q -O - https://github.com/kyverno/kyverno/releases/download/v1.5.4/kyverno-cli_v1.5.4_linux_x86_64.tar.gz | tar -C /usr/local/bin -xzf - kyverno
-
-      - name: Kyverno tests
-        run: kubectl kustomize app | kyverno apply  policy/kubernetes/kyverno/*/policy.yaml  --resource -
-
+  policy:
+    uses: example-policy-org/policy-action/.github/workflows/ci.yml@main
