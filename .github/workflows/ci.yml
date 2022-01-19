@@ -2,15 +2,13 @@ name: Policy
 
 on:
   push:
-    branches:
-      - main
-    tags:
-      - "*.*.*"
   pull_request:
-    branches:
-      - main
 
 jobs:
 
   policy:
-    uses: example-policy-org/policy-action/.github/workflows/ci.yml@main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - uses: docker://ghcr.io/example-policy-org/policy-checker:latest
+
