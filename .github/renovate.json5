@@ -2,15 +2,19 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "dependencyDashboard": false,
   "automerge": false,
+  "pinDigests": true,
   "regexManagers": [
     {
       "fileMatch": [
         "kustomization.yaml"
       ],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?mycompany.com/policy-version: (?<currentValue>.*)\\s"
+        "mycompany.com/policy-version: \"(?<currentValue>.*)\"\\s+"
       ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "policy",
+      "lookupNameTemplate": "example-policy-org/policy",
+      "versioningTemplate": "semver"
     }
   ]
 }
