@@ -1,6 +1,6 @@
 # App3
 
-> This app is compliant with version [2.0.0](https://github.com/example-policy-org/policy/releases/tag/2.0.0) of the company policy but its only using [1.0.0](https://github.com/example-policy-org/policy/releases/tag/1.0.0) and can be updated with a pull-request.
+> This app is compliant with version [2.0.1](https://github.com/example-policy-org/policy/releases/tag/2.0.1) of the company policy but its only using [1.0.0](https://github.com/example-policy-org/policy/releases/tag/1.0.0) and can be updated with a pull-request.
 
 ## Test policy locally
 
